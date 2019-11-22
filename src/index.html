@@ -2,24 +2,50 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <title>Ionic App</title>
+    <meta charset="utf-8"/>
+    <title>Ionic App</title>
 
-  <base href="/" />
+    <base href="/"/>
 
-  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="format-detection" content="telephone=no" />
-  <meta name="msapplication-tap-highlight" content="no" />
+    <meta content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          name="viewport"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta content="no" name="msapplication-tap-highlight"/>
 
-  <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
+    <link href="assets/icon/favicon.png" rel="icon" type="image/png"/>
 
-  <!-- add to homescreen for ios -->
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <!-- add to homescreen for ios -->
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <link href="manifest.webmanifest" rel="manifest">
+    <meta content="#1976d2" name="theme-color">
 </head>
 
 <body>
-  <app-root></app-root>
-</body>
+<app-root></app-root>
+<noscript>Please enable JavaScript to continue using this application.</noscript>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
 
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
+
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyBW_e4ucberfkmklgODJPLCsip6kuoxVO0",
+        authDomain: "farmingassistant-2444d.firebaseapp.com",
+        databaseURL: "https://farmingassistant-2444d.firebaseio.com",
+        projectId: "farmingassistant-2444d",
+        storageBucket: "farmingassistant-2444d.appspot.com",
+        messagingSenderId: "715594309734",
+        appId: "1:715594309734:web:215cef2845fd9a6f88cda7",
+        measurementId: "G-8Z6MRZG8CQ"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+</script>
+</body>
 </html>
