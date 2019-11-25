@@ -11,6 +11,7 @@ declare var exports: any;
     templateUrl: 'home.page.html',
     styleUrls: ['home.page.scss'],
 })
+
 export class HomePage {
     allNotes: any;
     eventSource = [];
@@ -23,7 +24,7 @@ export class HomePage {
         url: ''
     };
 
-    constructor(public myEvents: EventServiceService) {
+    constructor(public calEvents: EventServiceService) {
     }
 
     resetEventFork() {
@@ -38,9 +39,11 @@ export class HomePage {
     }
 
     ngOnInit() {
-        this.myEvents.getMyEvents().then(data => {
+        this.calEvents.getMyEvents().then(data => {
             this.allNotes = data;
             let abc = [];
+            let renderCount = 0;
+            let originalDate;
             for (let i = 0; i < this.allNotes.length; i++) {
                 this.event.title = this.allNotes[i]["doc"]["note"]["title"];
                 this.event.desc = this.allNotes[i]["doc"]["note"]["desc"];
@@ -84,7 +87,8 @@ export class HomePage {
                     };
                 })(Hammer.Manager.prototype.emit);
             }));
-            // page is now ready, initialize the calendar...
+
+            // initialize the calendar
             let calendar = $("#calendar").fullCalendar({
                 themeSystem: 'bootstrap4',
                 // buttonText: {
@@ -104,10 +108,29 @@ export class HomePage {
                 handleWindowResize: true,
                 dayClick: function (date) {
                     let c = prompt("Enter Crop: ", "Grape");
-                    console.log("crop: " + c + " on " + date.format() + abc);
-                    calendar.fullCalendar('renderEvents', abc);
+                    if (c != null) {
+                        if (renderCount != 1) {
+                            renderCount = 1;
+                            let eventService = new EventServiceService();
+                            eventService.getStartEvent(c, date);
+                            calendar.fullCalendar('renderEvents', abc, true);
+                        }
+                    }
+                },
+                eventClick: function (event, jsEvent, view) {
+                    $('#modalTitle').html(event.title);
+                    $('#modalBody').html(event.desc);
+                    $('#calendarModal').appendTo("body").modal();
+                },
+                eventDragStart: function (event) {
+                    originalDate = new Date(event.start).toISOString();
+                },
+                eventDrop: function (info) {
+                    let eventService = new EventServiceService();
+                    eventService.updateEvent(info);
                 }
             });
+
             //Hammer Js swipe
             calendar.hammer().on("swipeleft", function (event) {
                 calendar.fullCalendar('next');
@@ -117,5 +140,4 @@ export class HomePage {
             });
         });
     }
-
 }
