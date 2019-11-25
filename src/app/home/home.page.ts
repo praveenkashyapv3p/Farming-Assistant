@@ -40,6 +40,7 @@ export class HomePage {
     ngOnInit() {
         this.myEvents.getMyEvents().then(data => {
             this.allNotes = data;
+            let abc = [];
             for (let i = 0; i < this.allNotes.length; i++) {
                 this.event.title = this.allNotes[i]["doc"]["note"]["title"];
                 this.event.desc = this.allNotes[i]["doc"]["note"]["desc"];
@@ -48,6 +49,7 @@ export class HomePage {
                 this.event.end = new Date(this.allNotes[i]["doc"]["note"]["endTime"]);
                 this.event.url = this.allNotes[i]["doc"]["note"]["url"];
                 this.eventSource.push(this.event);
+                abc = this.eventSource;
                 this.resetEventFork();
             }
             (function (factory) {
@@ -100,22 +102,11 @@ export class HomePage {
                 defaultView: 'month',
                 contentHeight: 445,
                 handleWindowResize: true,
-                events: this.eventSource,
                 dayClick: function (date) {
                     let c = prompt("Enter Crop: ", "Grape");
-                    console.log("crop: " + c + " on " + date.format());
-                    //window.location.reload();
-                },
-                eventClick: function (info, jsEvent, view) {
-                    console.log('Event: ' + info.title);
-                    console.log('View: ' + view.name);
-                    $(this).css('border-color', 'red');
-                    if (info.url) {
-                        window.open(info.url, "_blank");
-                        window.focus();
-                        return false;
-                    }
-                },
+                    console.log("crop: " + c + " on " + date.format() + abc);
+                    calendar.fullCalendar('renderEvents', abc);
+                }
             });
             //Hammer Js swipe
             calendar.hammer().on("swipeleft", function (event) {
