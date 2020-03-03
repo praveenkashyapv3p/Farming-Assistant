@@ -16,6 +16,7 @@ export class HomePage {
     allNotes: any;
     eventSource = [];
     event = {
+        step: '',
         title: '',
         desc: '',
         start: new Date(),
@@ -29,6 +30,7 @@ export class HomePage {
 
     resetEventFork() {
         this.event = {
+            step: this.event.step,
             title: this.event.title,
             desc: this.event.desc,
             start: new Date(this.event.start),
@@ -44,13 +46,14 @@ export class HomePage {
             let abc = [];
             let renderCount = 0;
             let originalDate;
-            for (let i = 0; i < this.allNotes.length; i++) {
-                this.event.title = this.allNotes[i]["doc"]["note"]["title"];
-                this.event.desc = this.allNotes[i]["doc"]["note"]["desc"];
-                this.event.allDay = this.allNotes[i]["doc"]["note"]["allDay"];
-                this.event.start = new Date(this.allNotes[i]["doc"]["note"]["startTime"]);
-                this.event.end = new Date(this.allNotes[i]["doc"]["note"]["endTime"]);
-                this.event.url = this.allNotes[i]["doc"]["note"]["url"];
+            for (let i = 0; i < this.allNotes[0]["doc"]["note"]["instructions"].length; i++) {
+                this.event.step = this.allNotes[0]["doc"]["note"]["instructions"][i].step;
+                this.event.title = this.allNotes[0]["doc"]["note"]["instructions"][i].title;
+                this.event.desc = this.allNotes[0]["doc"]["note"]["instructions"][i].description;
+                this.event.allDay = this.allNotes[0]["doc"]["note"]["instructions"][i].allDay;
+                this.event.start = new Date(this.allNotes[0]["doc"]["note"]["instructions"][i].startTime);
+                this.event.end = new Date(this.allNotes[0]["doc"]["note"]["instructions"][i].endTime);
+                this.event.url = this.allNotes[0]["doc"]["note"]["instructions"][i].url;
                 this.eventSource.push(this.event);
                 abc = this.eventSource;
                 this.resetEventFork();
@@ -91,13 +94,13 @@ export class HomePage {
             // initialize the calendar
             let calendar = $("#calendar").fullCalendar({
                 themeSystem: 'bootstrap4',
-                // buttonText: {
-                //     prev: 'prev',
-                //     next: 'next'
-                // },
+                buttonText: {
+                    prev: 'prev',
+                    next: 'next'
+                },
                 header: {
                     left: 'title',
-                    center: 'today month,agendaWeek,agendaDay,list',
+                    center: 'today month,agendaWeek,agendaDay,list prev,next',
                     right: ''
                 },
                 navLinks: true,
@@ -107,19 +110,22 @@ export class HomePage {
                 contentHeight: 445,
                 handleWindowResize: true,
                 dayClick: function (date) {
-                    let c = prompt("Enter Crop: ", "Grape");
-                    if (c != null) {
-                        if (renderCount != 1) {
-                            renderCount = 1;
-                            let eventService = new EventServiceService();
-                            eventService.getStartEvent(c, date);
-                            calendar.fullCalendar('renderEvents', abc, true);
-                        }
-                    }
+                     let c = prompt("Enter Crop: ", "Potato");
+                     if(c != null) {
+                         if (renderCount != 1) {
+                             renderCount = 1;
+                              let eventService = new EventServiceService();
+                              //eventService.getStartEvent(c, date);
+                             calendar.fullCalendar('renderEvents', abc, true);
+                         }
+                     }
+                    //calendar.fullCalendar('renderEvents', abc, true);
                 },
-                eventClick: function (event, jsEvent, view) {
+                eventClick:  function(event, jsEvent, view) {
+                    jsEvent.preventDefault();
                     $('#modalTitle').html(event.title);
-                    $('#modalBody').html(event.desc);
+                    $('#modalBody').html("Description: "+ event.desc + "<br>Start: " + event.start._d + "<br>End: " + event.end._d +
+                   "<br>Visit: <a href="+event.url+" target=\"_blank\">"+event.url+"</a>");
                     $('#calendarModal').appendTo("body").modal();
                 },
                 eventDragStart: function (event) {
@@ -128,6 +134,7 @@ export class HomePage {
                 eventDrop: function (info) {
                     let eventService = new EventServiceService();
                     eventService.updateEvent(info);
+                    console.log("original date: "+ originalDate + " drop date: "+ info.start.toISOString() + " " + info.end.toISOString());
                 }
             });
 

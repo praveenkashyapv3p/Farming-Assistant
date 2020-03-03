@@ -46,7 +46,7 @@
               "node_modules/bootstrap/dist/js/bootstrap.js",
               "node_modules/moment/min/moment.min.js",
               "node_modules/fullcalendar/dist/fullcalendar.min.js",
-              "node_modules/hammerjs/src/hammer.js"
+              "node_modules/hammerjs/hammer.js"
             ]
           },
           "configurations": {
