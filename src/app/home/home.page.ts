@@ -35,7 +35,7 @@ export class HomePage implements OnInit {
         let renderCount = 0;
         let myEvents: any;
         let diff: any;
-        let originalDate, dataId;
+        let originalDate, dataId, cropName;
         let eventSource = [];
         let event = {
             step: '',
@@ -44,7 +44,8 @@ export class HomePage implements OnInit {
             start: new Date(),
             end: new Date(),
             allDay: false,
-            url: ''
+            url: '',
+            backgroundColor: ''
         };
         (function (factory) {
             if (typeof define === 'function' && define.amd) {
@@ -79,12 +80,18 @@ export class HomePage implements OnInit {
             })(Hammer.Manager.prototype.emit);
         }));
 
-        this.calEvents.getMyEvents().then(data =>{
+
+        this.calEvents.getMyEvents().then(data => {
             this.allNotes = data;
-            dataId = this.allNotes._id;
-            console.log("Doc ID: " + this.allNotes[0].id );
-            console.log("cropName: " + this.allNotes[0]["doc"]["note"]["crop"] + " length: " + this.allNotes[0]["doc"]["note"]["instructions"].length);
+            dataId = this.allNotes[1].id;
+            cropName = this.allNotes[1]["doc"]["note"]["crop"];
+            if (this.allNotes[1]["doc"]["note"]["instructions"].length > 0) {
+                console.log("cropName: " + cropName);
+            } else {
+                console.log("working");
+            }
         });
+
         // initialize the calendar
         let calendar = $("#calendar").fullCalendar({
             themeSystem: 'bootstrap4',
@@ -106,56 +113,56 @@ export class HomePage implements OnInit {
             dayClick: function (date) {
                 let c = prompt("Enter Crop: ", "Potato");
                 if (c != null) {
-                    if (renderCount != 1) {
-                        renderCount = 1;
-                        let db = new PouchDB('calen');
-                        db.get('test1').then(function (doc) {
-                            const prevStart = new Date(doc.note.instructions[0].startTime);
-                            const preEnd = new Date(doc.note.instructions[0].endTime);
-                            const diffTime = Math.abs(preEnd.getTime() - prevStart.getTime());
-                            diff = Math.ceil(diffTime / (1000 * 3600 * 24));
-                            doc.note.instructions[0].startTime = new Date(date).toISOString();
-                            const newStart = new Date(doc.note.instructions[0].startTime);
-                            let newEndTime = new Date(doc.note.instructions[0].endTime);
-                            newEndTime.setDate(newStart.getDate() + diff);
-                            doc.note.instructions[0].endTime = newEndTime.toISOString();
-                            return db.put(doc);
-                        }).then(function () {
-                            return db.get('test1');
-                        }).then(function (doc) {
-                        });
-                        db.sync('http://127.0.0.1:5984/calen');
+                    let db = new PouchDB('calen');
+                    db.get('test1').then(function (doc) {
+                        const prevStart = new Date(doc.note.instructions[0].startTime);
+                        const preEnd = new Date(doc.note.instructions[0].endTime);
+                        const diffTime = Math.abs(preEnd.getTime() - prevStart.getTime());
+                        diff = Math.ceil(diffTime / (1000 * 3600 * 24));
+                        doc.note.instructions[0].startTime = new Date(date).toISOString();
+                        const newStart = new Date(doc.note.instructions[0].startTime);
+                        let newEndTime = new Date(doc.note.instructions[0].endTime);
+                        newEndTime.setDate(newStart.getDate() + diff);
+                        doc.note.instructions[0].endTime = newEndTime.toISOString();
+                        return db.put(doc);
+                    }).then(function () {
+                        return db.get('test1');
+                    }).then(function (doc) {
+                    });
+                    db.sync('http://127.0.0.1:5984/calen');
 
-                        db.allDocs({
-                            include_docs: true,
-                            attachments: true
-                        }).then(function (result) {
-                            myEvents = result.rows;
-                            for (let i = 0; i < myEvents[0]["doc"]["note"]["instructions"].length; i++) {
-                                event.step = myEvents[0]["doc"]["note"]["instructions"][i].step;
-                                event.title = myEvents[0]["doc"]["note"]["instructions"][i].title;
-                                event.desc = myEvents[0]["doc"]["note"]["instructions"][i].description;
-                                event.allDay = myEvents[0]["doc"]["note"]["instructions"][i].allDay;
-                                event.start = new Date(myEvents[0]["doc"]["note"]["instructions"][i].startTime);
-                                event.end = new Date(myEvents[0]["doc"]["note"]["instructions"][i].endTime);
-                                event.url = myEvents[0]["doc"]["note"]["instructions"][i].url;
-                                eventSource.push(event);
-                                abc = eventSource;
-                                event = {
-                                    step: event.step,
-                                    title: event.title,
-                                    desc: event.desc,
-                                    start: new Date(event.start),
-                                    end: new Date(event.end),
-                                    allDay: event.allDay,
-                                    url: event.url
-                                };
-                            }
-                            calendar.fullCalendar('renderEvents', abc, true);
-                        }).catch(function (err) {
-                            console.log(err);
-                        });
-                    }
+                    db.allDocs({
+                        include_docs: true,
+                        attachments: true
+                    }).then(function (result) {
+                        myEvents = result.rows;
+                        for (let i = 0; i < myEvents[1]["doc"]["note"]["instructions"].length; i++) {
+                            event.step = myEvents[1]["doc"]["note"]["instructions"][i].step;
+                            event.title = myEvents[1]["doc"]["note"]["instructions"][i].title;
+                            event.desc = myEvents[1]["doc"]["note"]["instructions"][i].description;
+                            event.allDay = myEvents[1]["doc"]["note"]["instructions"][i].allDay;
+                            event.start = new Date(myEvents[1]["doc"]["note"]["instructions"][i].startTime);
+                            event.end = new Date(myEvents[1]["doc"]["note"]["instructions"][i].endTime);
+                            event.url = myEvents[1]["doc"]["note"]["instructions"][i].url;
+                            event.backgroundColor = myEvents[1]["doc"]["note"]["instructions"][i].backgroundColor;
+                            eventSource.push(event);
+                            abc = eventSource;
+                            event = {
+                                step: event.step,
+                                title: event.title,
+                                desc: event.desc,
+                                start: new Date(event.start),
+                                end: new Date(event.end),
+                                allDay: event.allDay,
+                                url: event.url,
+                                backgroundColor: event.backgroundColor
+                            };
+                        }
+                    }).then(function () {
+                        calendar.fullCalendar('renderEvents', abc, true);
+                    }).catch(function (err) {
+                        console.log(err);
+                    });
                 }
             },
             eventClick: function (event, jsEvent) {
@@ -200,15 +207,17 @@ export class HomePage implements OnInit {
                             doc.note.instructions[ii].endTime = newEndTime.toISOString();
                         }
                     }
-                    calendar.fullCalendar('rerenderEvents');
+                    //calendar.fullCalendar('rerenderEvents');
                     console.log("_id: " + doc._id + " _rev: " + doc._rev + " note: " + doc.note.instructions);
                     return db.put({_id: doc._id, _rev: doc._rev, note: doc.note});
                 }).then(function () {
+                    return db.allDocs({include_docs: true});
+                }).then(function () {
                     calendar.fullCalendar('rerenderEvents');
                     console.log("coming here... ");
-                    return db.get(info.step);
-                }).catch(function (doc) {
-                    console.log("kommt " + doc);
+                    return db.allDocs({include_docs: true});
+                }).catch(function (err) {
+                    console.log("kommt " + err);
                 });
                 db.sync('http://127.0.0.1:5984/calen');
             }
