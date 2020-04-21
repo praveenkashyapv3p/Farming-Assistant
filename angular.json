@@ -121,7 +121,7 @@
                 "input": "src/assets",
                 "output": "/assets"
               },
-              "src/manifest.webmanifest"
+              "manifest.webmanifest"
             ]
           },
           "configurations": {

@@ -14,38 +14,43 @@
 
     <link href="assets/icon/favicon.png" rel="icon" type="image/png"/>
 
-    <!-- add to homescreen for ios -->
-    <meta content="yes" name="apple-mobile-web-app-capable"/>
-    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
-    <link href="src/manifest.webmanifest" rel="manifest">
+    <!-- Chrome for Android theme color -->
+    <meta name="theme-color" content="#2E3AA1">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Blog">
+    <link rel="icon" sizes="192x192" href="images/touch/icon-192x192.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Blog">
+    <link rel="apple-touch-icon" href="images/touch/icon-192x192.png">
+
+    <!-- Tile for Win8 -->
+    <meta name="msapplication-TileColor" content="#3372DF">
+    <meta name="msapplication-TileImage" content="images/touch/icon-192x192.png">
+    <link href="manifest.webmanifest" rel="manifest">
     <meta content="#1976d2" name="theme-color">
 </head>
 
 <body>
 <app-root></app-root>
-<noscript>Please enable JavaScript to continue using this application.</noscript>
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
-
 <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-        apiKey: "AIzaSyBW_e4ucberfkmklgODJPLCsip6kuoxVO0",
-        authDomain: "farmingassistant-2444d.firebaseapp.com",
-        databaseURL: "https://farmingassistant-2444d.firebaseio.com",
-        projectId: "farmingassistant-2444d",
-        storageBucket: "farmingassistant-2444d.appspot.com",
-        messagingSenderId: "715594309734",
-        appId: "1:715594309734:web:215cef2845fd9a6f88cda7",
-        measurementId: "G-8Z6MRZG8CQ"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
+    (function() {
+        if (!('serviceWorker' in navigator)) {
+            console.log('Service worker not supported');
+            return;
+        }
+        navigator.serviceWorker.register('service-worker.js')
+            .then(function(registration) {
+                console.log('SW successfully registered');
+            })
+            .catch(function(error) {
+                console.log('registration failed', error);
+            });
+    })();
 </script>
 </body>
 </html>
