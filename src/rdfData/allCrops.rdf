@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:schema="http://schema.org/">
+
+  <rdf:Description rdf:nodeID="genid1">
+    <schema:ItemList>
+      <rdf:Description>
+        <schema:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">testing1</schema:description>
+        <schema:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-08-05T00:00:00.000Z</schema:endTime>
+        <schema:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">potato</schema:name>
+        <schema:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-08-04T00:00:00.000Z</schema:startTime>
+        <schema:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">done</schema:status>
+        <schema:step rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</schema:step>
+        <schema:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cultivate the soil.</schema:title>
+        <schema:url rdf:datatype="http://www.w3.org/2001/XMLSchema#string">www.google.com</schema:url>
+      </rdf:Description>
+    </schema:ItemList>
+
+    <schema:ItemList>
+      <rdf:Description>
+        <schema:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">testing2</schema:description>
+        <schema:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-08-07T18:10:39.583Z</schema:endTime>
+        <schema:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">potato</schema:name>
+        <schema:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-08-07T18:10:39.583Z</schema:startTime>
+        <schema:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">done</schema:status>
+        <schema:step rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</schema:step>
+        <schema:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dig a trench that  is 6-8 inches deep. (Rows should be 3 feet apart)</schema:title>
+        <schema:url rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></schema:url>
+      </rdf:Description>
+    </schema:ItemList>
+
+    <schema:ItemList>
+      <rdf:Description>
+        <schema:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">testing3</schema:description>
+        <schema:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-08-10T18:10:39.583Z</schema:endTime>
+        <schema:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">potato</schema:name>
+        <schema:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-08-10T18:10:39.583Z</schema:startTime>
+        <schema:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">done</schema:status>
+        <schema:step rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</schema:step>
+        <schema:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">plant each peice with eyes pointing upside every 12-15 inches spaced. </schema:title>
+        <schema:url rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></schema:url>
+      </rdf:Description>
+    </schema:ItemList>
+
+    <schema:ItemList>
+      <rdf:Description>
+        <schema:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">testing4</schema:description>
+        <schema:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-08-13T18:10:39.583Z</schema:endTime>
+        <schema:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">potato</schema:name>
+        <schema:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-08-13T18:10:39.583Z</schema:startTime>
+        <schema:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">done</schema:status>
+        <schema:step rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</schema:step>
+        <schema:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fill the trench with 4 inches of soil.</schema:title>
+        <schema:url rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></schema:url>
+      </rdf:Description>
+    </schema:ItemList>
+
+    <schema:ItemList>
+      <rdf:Description>
+        <schema:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">testing5</schema:description>
+        <schema:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-08-16T18:10:39.583Z</schema:endTime>
+        <schema:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">potato</schema:name>
+        <schema:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-08-16T18:10:39.583Z</schema:startTime>
+        <schema:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">done</schema:status>
+        <schema:step rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</schema:step>
+        <schema:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fill the trench as and when the plant grows.(soil can be mounded even as plant grows).</schema:title>
+        <schema:url rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></schema:url>
+      </rdf:Description>
+    </schema:ItemList>
+
+    <schema:ItemList>
+      <rdf:Description>
+        <schema:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">testing6</schema:description>
+        <schema:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-08-19T18:10:39.583Z</schema:endTime>
+        <schema:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">potato</schema:name>
+        <schema:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-08-19T18:10:39.583Z</schema:startTime>
+        <schema:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">done</schema:status>
+        <schema:step rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</schema:step>
+        <schema:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Potato vines should be wtered throughout the summer.(1-2 inches of water per week).</schema:title>
+        <schema:url rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></schema:url>
+      </rdf:Description>
+    </schema:ItemList>
+
+    <schema:ItemList>
+      <rdf:Description>
+        <schema:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">testing7</schema:description>
+        <schema:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-08-22T18:10:39.583Z</schema:endTime>
+        <schema:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">potato</schema:name>
+        <schema:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-08-22T18:10:39.583Z</schema:startTime>
+        <schema:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">In Progress</schema:status>
+        <schema:step rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</schema:step>
+        <schema:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stop watering as foliage turns yellow.</schema:title>
+        <schema:url rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></schema:url>
+      </rdf:Description>
+    </schema:ItemList>
+
+    <schema:ItemList>
+      <rdf:Description>
+        <schema:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">testing8</schema:description>
+        <schema:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-08-25T18:10:39.583Z</schema:endTime>
+        <schema:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">potato</schema:name>
+        <schema:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-08-25T18:10:39.583Z</schema:startTime>
+        <schema:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">To be done</schema:status>
+        <schema:step rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</schema:step>
+        <schema:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Harvest 2-3 weeks after foliage  dies.</schema:title>
+        <schema:url rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></schema:url>
+      </rdf:Description>
+    </schema:ItemList>
+
+    <schema:ItemList>
+      <rdf:Description>
+        <schema:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">testing9</schema:description>
+        <schema:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-08-27T18:10:39.583Z</schema:endTime>
+        <schema:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">potato</schema:name>
+        <schema:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-08-28T18:10:39.583Z</schema:startTime>
+        <schema:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">To be done</schema:status>
+        <schema:step rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</schema:step>
+        <schema:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Allow potatoes to cure in dry protected area for 2-3 days unwashed. </schema:title>
+        <schema:url rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></schema:url>
+      </rdf:Description>
+    </schema:ItemList>
+
+    <schema:ItemList>
+      <rdf:Description>
+        <schema:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">testing10</schema:description>
+        <schema:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-08-31T18:10:39.583Z</schema:endTime>
+        <schema:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">potato</schema:name>
+        <schema:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-08-31T18:10:39.583Z</schema:startTime>
+        <schema:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">To be done</schema:status>
+        <schema:step rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</schema:step>
+        <schema:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Store the potatoes in well ventilated, dark and cool area with temperature between 2-5 degree celcius.</schema:title>
+        <schema:url rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></schema:url>
+      </rdf:Description>
+    </schema:ItemList>
+
+    <schema:ItemList>
+      <rdf:Description>
+        <schema:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">testing1</schema:description>
+        <schema:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-04-04T00:00:00.000Z</schema:endTime>
+        <schema:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">grape</schema:name>
+        <schema:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-04-03T00:00:00.000Z</schema:startTime>
+        <schema:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">done</schema:status>
+        <schema:step rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</schema:step>
+        <schema:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cultivate the soil.</schema:title>
+        <schema:url rdf:datatype="http://www.w3.org/2001/XMLSchema#string">www.google.com</schema:url>
+      </rdf:Description>
+    </schema:ItemList>
+
+    <schema:ItemList>
+      <rdf:Description>
+        <schema:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">testing2</schema:description>
+        <schema:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-04-07T00:00:00.000Z</schema:endTime>
+        <schema:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">grape</schema:name>
+        <schema:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-04-06T14:55:12.102Z</schema:startTime>
+        <schema:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">done</schema:status>
+        <schema:step rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</schema:step>
+        <schema:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dig a trench that  is 6-8 inches deep. (Rows should be 3 feet apart)</schema:title>
+        <schema:url rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></schema:url>
+      </rdf:Description>
+    </schema:ItemList>
+
+    <schema:ItemList>
+      <rdf:Description>
+        <schema:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">testing3</schema:description>
+        <schema:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-04-10T00:00:00.000Z</schema:endTime>
+        <schema:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">grape</schema:name>
+        <schema:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-04-09T14:55:12.102Z</schema:startTime>
+        <schema:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">done</schema:status>
+        <schema:step rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</schema:step>
+        <schema:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">plant each peice with eyes pointing upside every 12-15 inches spaced. </schema:title>
+        <schema:url rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></schema:url>
+      </rdf:Description>
+    </schema:ItemList>
+
+    <schema:ItemList>
+      <rdf:Description>
+        <schema:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">testing4</schema:description>
+        <schema:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-04-11T00:00:00.000Z</schema:endTime>
+        <schema:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">grape</schema:name>
+        <schema:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-04-12T14:55:12.102Z</schema:startTime>
+        <schema:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">done</schema:status>
+        <schema:step rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</schema:step>
+        <schema:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fill the trench with 4 inches of soil.</schema:title>
+        <schema:url rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></schema:url>
+      </rdf:Description>
+    </schema:ItemList>
+
+    <schema:ItemList>
+      <rdf:Description>
+        <schema:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">testing5</schema:description>
+        <schema:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-04-16T00:00:00.000Z</schema:endTime>
+        <schema:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">grape</schema:name>
+        <schema:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-04-15T14:55:12.102Z</schema:startTime>
+        <schema:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">done</schema:status>
+        <schema:step rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</schema:step>
+        <schema:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fill the trench as and when the plant grows.(soil can be mounded even as plant grows).</schema:title>
+        <schema:url rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></schema:url>
+      </rdf:Description>
+    </schema:ItemList>
+
+    <schema:ItemList>
+      <rdf:Description>
+        <schema:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">testing6</schema:description>
+        <schema:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-04-19T00:00:00.000Z</schema:endTime>
+        <schema:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">grape</schema:name>
+        <schema:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-04-18T14:55:12.102Z</schema:startTime>
+        <schema:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">done</schema:status>
+        <schema:step rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</schema:step>
+        <schema:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Grape vines should be wtered throughout the summer.(1-2 inches of water per week).</schema:title>
+        <schema:url rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></schema:url>
+      </rdf:Description>
+    </schema:ItemList>
+
+    <schema:ItemList>
+      <rdf:Description>
+        <schema:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">testing7</schema:description>
+        <schema:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-04-22T00:00:00.000Z</schema:endTime>
+        <schema:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">grape</schema:name>
+        <schema:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-04-21T14:55:12.102Z</schema:startTime>
+        <schema:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">In Progress</schema:status>
+        <schema:step rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</schema:step>
+        <schema:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stop watering as foliage turns yellow.</schema:title>
+        <schema:url rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></schema:url>
+      </rdf:Description>
+    </schema:ItemList>
+
+    <schema:ItemList>
+      <rdf:Description>
+        <schema:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">testing8</schema:description>
+        <schema:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-04-25T00:00:00.000Z</schema:endTime>
+        <schema:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">grape</schema:name>
+        <schema:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-04-24T14:55:12.102Z</schema:startTime>
+        <schema:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">To be done</schema:status>
+        <schema:step rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</schema:step>
+        <schema:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Harvest 2-3 weeks after foliage  dies.</schema:title>
+        <schema:url rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></schema:url>
+      </rdf:Description>
+    </schema:ItemList>
+
+    <schema:ItemList>
+      <rdf:Description>
+        <schema:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">testing9</schema:description>
+        <schema:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-04-28T00:00:00.000Z</schema:endTime>
+        <schema:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">grape</schema:name>
+        <schema:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-04-27T14:55:12.102Z</schema:startTime>
+        <schema:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">To be done</schema:status>
+        <schema:step rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</schema:step>
+        <schema:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Allow Grape to cure in dry protected area for 2-3 days unwashed. </schema:title>
+        <schema:url rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></schema:url>
+      </rdf:Description>
+    </schema:ItemList>
+
+    <schema:ItemList>
+      <rdf:Description>
+        <schema:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">testing10</schema:description>
+        <schema:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-04-31T00:00:00.000Z</schema:endTime>
+        <schema:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">grape</schema:name>
+        <schema:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-04-30T14:55:12.102Z</schema:startTime>
+        <schema:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">To be done</schema:status>
+        <schema:step rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</schema:step>
+        <schema:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Store the Grape in well ventilated, dark and cool area with temperature between 2-5 degree celcius.</schema:title>
+        <schema:url rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></schema:url>
+      </rdf:Description>
+    </schema:ItemList>
+
+  </rdf:Description>
+
+</rdf:RDF>
