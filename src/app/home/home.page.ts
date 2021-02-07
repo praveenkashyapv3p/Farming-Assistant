@@ -15,23 +15,21 @@ declare var exports: any;
 })
 
 export class HomePage implements OnInit {
-  event = {
-    step: '',
-    title: '',
-    desc: '',
-    start: moment(),
-    end: moment(),
-    allDay: false,
-    url: '',
-    cropName: '',
-    imageurl: ''
-  };
-  selectedValue: any;
-  clients = [
-    {id: '1', clientName: 'a'},
-    {id: '2', clientName: 'b'},
-    {id: '3', clientName: 'c'}
-  ];
+  // event = {
+  //   step: '',
+  //   title: '',
+  //   desc: '',
+  //   start: moment(),
+  //   end: moment(),
+  //   allDay: false,
+  //   url: '',
+  //   cropName: '',
+  //   imageurl: ''
+  // };
+   selectedValue: any;
+   //trial = new EventServiceService();
+  //clients = this.trial.getMyEvents();
+   clients : any;
 
   constructor() {
   }
@@ -53,6 +51,8 @@ export class HomePage implements OnInit {
       cropName: '',
       imageurl: ''
     };
+    let eventServiceService = new EventServiceService();
+    this.clients = [{id:'1', crop:'potato'},{id:'2', crop:'grape'}];
 
     (function (factory) {
       if (typeof define === 'function' && define.amd) {
@@ -115,8 +115,7 @@ export class HomePage implements OnInit {
       return eventSource;
     }
 
-    let eventServiceService = new EventServiceService();
-    eventServiceService.getPDF();
+
 
     function cropUpdate(eventSource, dates) {
       let offset = 0;
@@ -125,12 +124,12 @@ export class HomePage implements OnInit {
         const previousEnd = moment(eventSource.doc.note.instructions[i].end);
         const prvStartEndDiff = previousEnd.diff(previousStart, 'd');
         if (i === 0) {
-          eventSource.doc.note.instructions[i].start = moment(dates).toISOString();
+          eventSource.doc         .note.instructions[i].start = moment(dates).toISOString();
           let newStDate = moment(eventSource.doc.note.instructions[i].start);
           //const  prvStartEndDiff = previousEnd.diff(previousStart,'d');
           let newEndDate = newStDate.add(prvStartEndDiff, 'd')
           eventSource.doc.note.instructions[i].end = newEndDate.toISOString();
-          console.log(prvStartEndDiff + "\t" + newEndDate);
+          // console.log(prvStartEndDiff + "\t" + newEndDate);
           const clickedDate = moment(dates);
           offset = clickedDate.diff(previousStart, 'd');
         } else {
@@ -144,25 +143,31 @@ export class HomePage implements OnInit {
       return eventSource;
     }
 
-    function validateSelDate(date: any, eventflag) {
+
+
+    function validateSelDate(date, eventflag) {
       let c;
-      if (eventflag == "dayclcick ") {
+      if (eventflag == "dayclcick") {
         c = prompt("Enter Crop: ", "Potato");
       }
-      const begin = moment('16/03/____', 'DD/MM/____') // begin
-      const end = moment('16/04/____', 'DD/MM/____') // end
+      const begin = moment('16/03/____', 'DD/MM/____')
+      const end = moment('16/04/____', 'DD/MM/____')
+       console.log("begin"+ begin.toDate()+ "\nend"+ end.toDate() +"\ndate:"+moment(date).toDate()+"\nflag:"+moment(date).isBetween(begin, end, 'days', '[]'));
       if (moment(date).isBetween(begin, end, 'days', '[]')) {
-        return c;
+        if (eventflag == "dayclcick")
+          return c;
+        else
+          return true;
       } else {
         switch (eventflag) {
           case "dayclcick":
-            if (confirm("The recommended start date for farming of potatoes is between March to mid April. " +
+            if (confirm("The recommended start date for farming is between March to mid April. " +
               "Do you still want to continue with current selected date?")) {
               return c;
             }
             break;
           case "evetdrp":
-            if (confirm("The recommended start date for farming of potatoes is between March to mid April." +
+            if (confirm("The recommended start date for farming is between March to mid April." +
               "This modification pushes the start date out of recommended range. " +
               "Do you still want to continue with current selected date?")) {
               return true;
@@ -243,8 +248,8 @@ export class HomePage implements OnInit {
             calendar.fullCalendar('removeEvents');
           }).then(function () {
             calendar.fullCalendar('renderEvents', allCropNote.instructions, true);
-          }).then(function () {
-            calendar.render();
+            // }).then(function () {
+            //   calendar.render();
           });
         } catch (e) {
           console.log(e);
@@ -268,47 +273,66 @@ export class HomePage implements OnInit {
         });
         await db.get("allCrops").then(function (doc) {
           let c;
+          let checkstart = moment();
+          let currentstart = moment();
+          for (let k = 0; k < doc.note.instructions.length; k++) {
+            if (doc.note.instructions[k].step == info.step && doc.note.instructions[k].cropName == info.cropName) {
+              currentstart = moment(doc.note.instructions[k].start);
+              let drpstart = moment(info.start);
+              offset = drpstart.diff(currentstart, 'd');
+            }
+          }
+
+
           for (i; i < doc.note.instructions.length; i++) {
-            if (doc.note.instructions[i].step == 1) {
-              i = 0;
-              c = validateSelDate(doc.note.instructions[i].start, "evetdrp");
+            if (doc.note.instructions[i].step == 1 && doc.note.instructions[i].cropName == info.cropName) {
+              //i = 0;
+              let dummystart = moment(doc.note.instructions[i].start);
+              checkstart = dummystart.add(offset, 'days');
+              c = validateSelDate(checkstart, "evetdrp");
               if (!c) {
                 calendar.fullCalendar('renderEvents', presrntevent, true);
                 break;
               }
             }
             if (c) {
-              let ii = i + 1;
+              //let ii = i + 1;
               if (doc.note.instructions[i].step === info.step && doc.note.instructions[i].cropName === info.cropName) {
                 let preveStartTime = moment(doc.note.instructions[i].start);
-                //checkstart = moment(info.start).toISOString();
-                doc.note.instructions[i].start = moment(info.start).toISOString();
-                doc.note.instructions[i].end = moment(info.end).toISOString();
-                let newStrt = moment(doc.note.instructions[i].start);
-                offset = newStrt.diff(preveStartTime, 'd');
+                //doc.note.instructions[i].start = moment(info.start).toISOString();
+                //doc.note.instructions[i].end = moment(info.end).toISOString();
+                let newStrt = moment(info.start);
+                offset = newStrt.startOf('d').diff(preveStartTime.startOf('d'), 'd', true);
+                console.log(preveStartTime.toDate() + "\n" + newStrt.toDate() + "\n" + offset);
               }
-              if (doc.note.instructions.length != ii && doc.note.instructions[ii].cropName === info.cropName) {
-                const prevStart = moment(doc.note.instructions[ii].start);
-                let prevEnd = moment(doc.note.instructions[ii].end);
-                let newSt = prevStart.add(offset, 'd');
-                doc.note.instructions[ii].start = newSt.toISOString();
-                let diffe = prevEnd.diff(prevStart, 'd');
-                let newStrt = moment(doc.note.instructions[ii].start);
-                let newEnd = newStrt.add(diffe, 'd');
-                doc.note.instructions[ii].end = newEnd.toISOString();
+
+            }
+          }
+          for (let l = 0; l < doc.note.instructions.length; l++) {
+            if (c) {
+              if (doc.note.instructions.length != l && doc.note.instructions[l].step >= info.step && doc.note.instructions[l].cropName === info.cropName) {
+                const prevStart = moment(doc.note.instructions[l].start);
+                let prevEnd = moment(doc.note.instructions[l].end);
+                let newSt = prevStart.startOf('day').add(offset, 'd');
+                doc.note.instructions[l].start = newSt.toISOString();
+                let diffe = prevEnd.startOf('day').diff(newSt.startOf('day'), 'd', true);
+                let newStrt = moment(doc.note.instructions[l].start);
+                let newEnd = newStrt.startOf('day').add(diffe, 'd');
+                doc.note.instructions[l].end = newEnd.toISOString();
+                break;
               }
             }
           }
           return db.put({_id: doc._id, _rev: doc._rev, crop: doc.crop, note: doc.note});
-        }).then(function () {
+        }).then(async function () {
           for (let i = 0; i < getCropJson.length; i++) {
-            db.get("allCrops").then(function (doc) {
+            await db.get("allCrops").then(function (doc) {
               let ghi = getAllEvents(doc);
               def = [...ghi];
             }).then(function () {
               calendar.fullCalendar('removeEvents');
             }).then(function () {
-              calendar.fullCalendar('renderEvents', def, true);
+              calendar.fullCalendar('renderEvents', def);
             }).catch(function (err) {
               console.log(err);
             });
@@ -363,13 +387,13 @@ export class HomePage implements OnInit {
             $('#modalTitle').html(event.title);
             $('#modalBody').html("Description: " + event.desc + "<br>Date: " + event.start.format("dddd, MMMM Do YYYY") +
               "<br>Visit: <a href=" + event.url + " target=\"_blank\">" + event.url + "</a>" +
-              "<br> <label for=\"status\">Status:</label>\n" +
-              "\n" +
-              "<select (change) = \"selectChangeHandler($event)\" id=\"status\">\n" +
-              "  <option value=\"To do\">Todo</option>\n" +
-              "  <option value=\"InProgress\">In Progress</option>\n" +
-              "  <option value=\"Done\">Done</option>\n" +
-              "</select>\n" +
+              // "<br> <label for=\"status\">Status:</label>\n" +
+              // "\n" +
+              // "<select (change) = \"selectChangeHandler($event)\" id=\"status\">\n" +
+              // "  <option value=\"To do\">Todo</option>\n" +
+              // "  <option value=\"InProgress\">In Progress</option>\n" +
+              // "  <option value=\"Done\">Done</option>\n" +
+              // "</select>\n" +
               "  ");
             $('#calendarModal').appendTo("body").modal();
           },
@@ -445,7 +469,10 @@ export class HomePage implements OnInit {
     });
   }
 
-  public changeClient(): void { //here item is an object
-    console.log(this.selectedValue);
+
+  changeClient($event: CustomEvent) {
+    console.log($event + "\n" + this.selectedValue +"\n"+ this.clients);
+    let eventServiceService = new EventServiceService();
+    eventServiceService.getPDF();
   }
 }

@@ -21,17 +21,9 @@ export class EventServiceService {
     }
 
     public async getMyEvents() {
-        return new Promise(resolve => {
-            let _self = this;
-            this.database.allDocs({
-                include_docs: true,
-                attachments: true
-            }).then(function (result) {
-                _self.myEvents = result.rows;
-                resolve(_self.myEvents);
-            }).catch(function (err) {
-                console.log(err);
-            });
+            await this.database.get("crop").then(function (result) {
+              console.log(result.cropList);
+                return result.cropList;
         });
     }
 
@@ -62,11 +54,11 @@ export class EventServiceService {
                 }
             }
 
-            console.log("before splice: \n" + activitiesCropJSON);
+            //console.log("before splice: \n" + activitiesCropJSON);
             for (let i = 0; i < activitiesAllCropJSON.length; i++) {
                 activitiesCropJSON[i].splice(2, 0, activitiesAllCropJSON[i][1]);
             }
-            console.log("after splice: \n" + activitiesCropJSON);
+            //console.log("after splice: \n" + activitiesCropJSON);
             let keys = ["activity", "initial_date", "execution_date", "description"];
             let newArr = activitiesCropJSON.slice(0, activitiesCropJSON.length);
             let formatted = [], data = newArr, cols = keys, l = cols.length;
@@ -76,7 +68,7 @@ export class EventServiceService {
                     o[cols[j]] = d[j];
                 formatted.push(o);
             }
-            console.log(formatted);
+            //console.log(formatted);
             let doc = new jsPDF();
             let col1 = ["Activity", "Initial date", "Execution Date", "Description"];
             let rows1 = [];
@@ -88,7 +80,7 @@ export class EventServiceService {
                 rows1.push(temp1);
             });
             doc.autoTable(col1, rows1, {theme: 'grid'}, {startY: 60});
-            doc.save('Test.pdf');
+            doc.save('Schedule-Deviation-Report.pdf');
         })
     }
 }

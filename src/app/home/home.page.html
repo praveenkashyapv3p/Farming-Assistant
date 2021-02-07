@@ -2,9 +2,9 @@
 </ion-header>
 <ion-content>
   <div>
-    <ion-select [(ngModel)]="selectedValue" placeholder="select a crop" style="alignment: right; width: 10%" (ionChange)="changeClient($event)">
+    <ion-select [(ngModel)]="selectedValue" placeholder="select a crop" style="alignment: right; width: 15%" (ionChange)="changeClient($event)">
       <ion-select-option *ngFor="let client of clients" [value]="client.id">
-        {{client.clientName}}</ion-select-option>
+        {{client.crop}}</ion-select-option>
     </ion-select>
   </div>
     <div class="card">

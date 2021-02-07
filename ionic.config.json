@@ -1,7 +1,8 @@
 {
   "name": "FarmingAssistant",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular",
   "id": "0b27c639"
